@@ -6,18 +6,10 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", myMiddleWare(myHandler))
-	http.ListenAndServe("localhost:8080", nil)
-}
+	http.HandleFunc("/login", Login)
+	http.HandleFunc("/home", Home)
+	http.HandleFunc("/refresh", Refresh)
 
-func myHandler(w http.ResponseWriter, r *http.Request) {
-	log.Println("hello from handler")
-	w.WriteHeader(http.StatusOK)
-}
+	log.Fatal(http.ListenAndServe("localhost:8080", nil))
 
-func myMiddleWare(next http.HandlerFunc) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		log.Println("hello from middleware")
-		next(w, r)
-	}
 }
