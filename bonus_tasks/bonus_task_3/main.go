@@ -2,35 +2,15 @@ package main
 
 import "fmt"
 
-// part-1
-type Person struct {
-	name        string
-	phoneNumber int
-	location    string
-}
+type Stack []string
 
-//func (p Person) get_per() {
-//	fmt.Println("Name: ", p.name)
-//	fmt.Println("Phone number: ", p.phoneNumber)
-//	fmt.Println("Location: ", p.location)
-//}
-//
-//func (p *Person) set_per() {
-//	fmt.Println("Name: ", &p.name)
-//	fmt.Println("Phone number: ", &p.phoneNumber)
-//	fmt.Println("Location: ", &p.location)
-//}
-
-// part-2
-type Person2 []string
-
-func (s *Person2) IsEmpty() bool {
+func (s *Stack) IsEmpty() bool {
 	return len(*s) == 0
 }
-func (s *Person2) Push(str string) {
+func (s *Stack) Push(str string) {
 	*s = append(*s, str)
 }
-func (s *Person2) Pop() (string, bool) {
+func (s *Stack) Pop() (string, bool) {
 	if s.IsEmpty() {
 		return "", false
 	} else {
@@ -42,15 +22,7 @@ func (s *Person2) Pop() (string, bool) {
 }
 
 func main() {
-
-	// part-1
-	//per := Person{"Adilet", 87473433170, "Kaskelen"}
-	//per.get_per()
-	//
-	//per2 := Person{"Da3y", 87770541656, "Almaty"}
-	//per2.set_per()
-	// part-2
-	var stack Person2
+	var stack Stack
 
 	stack.Push("Data Structures")
 	stack.Push("And")
